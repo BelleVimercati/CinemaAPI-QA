@@ -29,7 +29,7 @@ Deve-se atentar aos DoD dessa User Storie, uma vez que esses são os critérios 
 - CRUD de gerenciamento de filmes implementado (CRIAR, ATUALIZAR, LISTAR E DELETAR);
 - Análise de testes cobrindo a rota filmes
 - Matriz de rastreabilidade implementada
-- Automação de testes baseado na análise realizada 
+- Automação de testes baseado na análise realizada
 
 ## Tipos de Testes
 
@@ -47,7 +47,7 @@ Deve-se atentar aos DoD dessa User Storie, uma vez que esses são os critérios 
 | CT02 | Cadastro de filme  | Cadastro de mais de um filme com mesmo nome               | Administrador        | POST   | Funcional | 400             |
 | CT03 | Cadastro de filme  | Cadastro de filme com dados faltando                      | Administrador        | POST   | Negativo  | 400             |
 | CT04 | Cadastro de filme  | Cadastro de filme com dados inválidos                     | Administrador        | POST   | Negativo  | 400             |
-| CT05 | Cadastro de filme  | Cadastro de filme                                         | Comum                | POST   | Segurança | 403             |
+| CT05 | Cadastro de filme  | Cadastro de filme com dados válidos                       | Comum                | POST   | Segurança | 403             |
 | CT06 | Listagem de filmes | Listar filmes cadastrados no sistema                      | Comum                | GET    | Positivo  | 200             |
 | CT07 | Busca de filme     | Busca de filme com id válido                              | Comum                | GET    | Positivo  | 200             |
 | CT08 | Busca de filme     | Busca de filme com id inválido                            | Comum                | GET    | Negativo  | 400             |
@@ -56,7 +56,7 @@ Deve-se atentar aos DoD dessa User Storie, uma vez que esses são os critérios 
 | CT11 | Deleção de filme   | Excluir filme com id válido                               | Comum                | DELETE | Segurança | 403             |
 | CT12 | Deleção de filme   | Excluir filme com id inválido                             | Administrador        | DELETE | Negativo  | 404             |
 | CT13 | Deleção de filme   | Excluir filme que contém tikets atribuídos                | Administrador        | DELETE | Funcional | 400             |
-| CT14 | Editar filme       | Editar uma informação do filme com id válido              | Administrador       | PUT    | Positivo  | 200             |
+| CT14 | Editar filme       | Editar uma informação do filme com id válido              | Administrador        | PUT    | Positivo  | 200             |
 | CT15 | Editar filme       | Editar uma informação do filme com id inválido            | Administrador        | PUT    | Negativo  | 404             |
 | CT16 | Editar filme       | Editar uma informação do filme com id válido              | Comum                | PUT    | Segurança | 403             |
 | CT17 | Editar filme       | Editar nome do filme com id válido, com nome já utilizado | Administrador        | PUT    | Funcional | 400             |
@@ -72,7 +72,7 @@ Os testes ditos canditados à automação foram selecionados com o intuito de co
 - Testes relacionados a deleção de filmes (CT10, CT11, CT12, CT13)
 - Testes relacionados a edição de filmes (CT14, CT15, CT16, CT17, CT18)
 
-Os testes selecionados compõem um gama de funcionalidades que garantem o funcionamento da aplicação, bem como verifica a segurança referente ao nível de acesso de funcionalidade, os *status code* bem como as mensagens de retorno das requisições devem ser monitoradas afim de verificar a consistência da API.
+Os testes selecionados compõem um gama de funcionalidades que garantem o funcionamento da aplicação, bem como verifica a segurança referente ao nível de acesso de funcionalidade, os _status code_ bem como as mensagens de retorno das requisições devem ser monitoradas afim de verificar a consistência da API.
 
 ## Executores
 
