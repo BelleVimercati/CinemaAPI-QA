@@ -1,4 +1,4 @@
-# 🗒️ Planejamento de Testes de Performance - ServeRest
+# 🗒️ Planejamento de Testes de Performance - Endpoint movies
 
 ## Resumo da estratégia
 
@@ -28,30 +28,52 @@ Este documento detalha a estratégia de testes de performance a serem realizados
 
 ## Tabela de Cenários de Teste para a Rota /movies
 
-| Código | Identificador | Cenário de Teste        | Descrição                                                                          | Carga                                                                   | Duração | Endpoints       |
-| ------ | :-----------: | ----------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------- | --------------- |
-| TP01   |       M       | Teste de Carga          | Avaliar o desempenho do sistema sob carga normal esperada.                         | 150 usuários simultâneos, com dois ciclos de 2 min                      | 4 min   | `` |
-| TP02   |       M       | Teste de Estresse       | Identificar o ponto de falha do sistema ao submetê-lo a uma carga extrema.         | 300 usuários simultâneos com requisições a cada 1 minuto, por 2 minutos | 4 min   | `` |
-| TP03   |       M       | Teste de Escalabilidade | Avaliar o comportamento do sistema sob diferentes configurações de infraestrutura. | 20% de usuários a mais do que no teste de estresse e mais 1 min         | 5 min   | `` |
-| TP04   |       M       | Teste de Pico           | Avaliar o comportamento do sistema sob um pico repentino de carga.                 | 700 usuários simultâneos por 3 min                                      | 3 min   | `` |
-| TP05   |       M       | Teste de Concorrência   | Avaliar como o sistema lida com múltiplos usuários acessando simultaneamente       | 500 usuários simultâneos por 1 minutos                                  | 1 min   | `` |
+| Código | Identificador | Cenário de Teste        | Descrição                                                                          | Carga                                                                   | Duração | Endpoints |
+| ------ | :-----------: | ----------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------- | --------- |
+| TP01   |       M       | Teste de Carga          | Avaliar o desempenho do sistema sob carga normal esperada.                         | 150 usuários simultâneos, com dois ciclos de 2 min                      | 4 min   | ``        |
+| TP02   |       M       | Teste de Estresse       | Identificar o ponto de falha do sistema ao submetê-lo a uma carga extrema.         | 300 usuários simultâneos com requisições a cada 1 minuto, por 2 minutos | 4 min   | ``        |
+| TP03   |       M       | Teste de Escalabilidade | Avaliar o comportamento do sistema sob diferentes configurações de infraestrutura. | 20% de usuários a mais do que no teste de estresse e mais 1 min         | 5 min   | ``        |
+| TP04   |       M       | Teste de Pico           | Avaliar o comportamento do sistema sob um pico repentino de carga.                 | 700 usuários simultâneos por 3 min                                      | 3 min   | ``        |
+| TP05   |       M       | Teste de Concorrência   | Avaliar como o sistema lida com múltiplos usuários acessando simultaneamente       | 500 usuários simultâneos por 1 minutos                                  | 1 min   | ``        |
 
-## Tabela de Cenários de Teste para a Rota /tikets
+## Métricas Esperadas para a rota
 
-| ID   | Identificador | Cenário de Teste        | Descrição                                                                          | Carga                                                                   | Duração | Endpoints    |
-| ---- | :-----------: | ----------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------- | ------------ |
-| TP01 |       T       | Teste de Carga          | Avaliar o desempenho do sistema sob carga normal esperada.                         | 150 usuários simultâneos, com dois ciclos de 2 min                      | 4 min   | `` |
-| TP02 |       T       | Teste de Estresse       | Identificar o ponto de falha do sistema ao submetê-lo a uma carga extrema.         | 300 usuários simultâneos com requisições a cada 1 minuto, por 2 minutos | 4 min   | `` |
-| TP03 |       T       | Teste de Escalabilidade | Avaliar o comportamento do sistema sob diferentes configurações de infraestrutura. | 20% de usuários a mais do que no teste de estresse e mais 1 min         | 5 min   | `` |
-| TP04 |       T       | Teste de Pico           | Avaliar o comportamento do sistema sob um pico repentino de carga.                 | 700 usuários simultâneos por 2 min                                      | 3 min   | `` |
-| TP05 |       T       | Teste de Concorrência   | Avaliar como o sistema lida com múltiplos usuários acessando simultaneamente       | 500 usuários simultâneos por 1 minutos                                  | 1 min   | `` |
+### POST
 
-## Métricas Esperadas para as rotas
+| ID      | Cenário de Teste        | Tempo Médio de Resposta | Taxa de Erros | Throughput (req/s) | Linha dos 90% |
+| ------- | ----------------------- | ----------------------- | ------------- | ------------------ | ------------- |
+| TP01-MP | Teste de Carga          | <= 200 ms               | < 0%          | >= 100             | <= 250 ms     |
+| TP01-MP | Teste de Estresse       | <= 500 ms               | < 1%          | >= 80              | <= 600 ms     |
+| TP01-MP | Teste de Escalabilidade | <= 300 ms               | < 1%          | >= 120             | <= 350 ms     |
+| TP01-MP | Teste de Pico           | <= 400 ms               | < 2%          | >= 150             | <= 500 ms     |
+| TP01-MP | Teste de Capacidade     | <= 250 ms               | < 1%          | >= 100             | <= 300 ms     |
 
-| ID   | Cenário de Teste        | Tempo Médio de Resposta | Taxa de Erros | Throughput (req/s) | Linha dos 90%  |
-| ---- | ----------------------- | ----------------------- | ------------- | ------------------ | -------------- |
-| TP01 | Teste de Carga          | <= 25 segundos          | 0%            | >= 12              | <= 59 segundos |
-| TP02 | Teste de Estresse       | <= 25 segundos          | 0%            | >= 7               | <= 24 segundos |
-| TP03 | Teste de Escalabilidade | <= 28 segundos          | 0%            | >= 15              | <= 30 segundos |
-| TP04 | Teste de Pico           | <= 17 segundos          | 0%            | >= 7               | <= 22 segundos |
-| TP05 | Teste de Capacidade     | <= 16 segundos          | 0%            | >= 4               | <= 23 segundos |
+### GET
+
+| ID      | Cenário de Teste        | Tempo Médio de Resposta | Taxa de Erros | Throughput (req/s) | Linha dos 90% |
+| ------- | ----------------------- | ----------------------- | ------------- | ------------------ | ------------- |
+| TP01-MG | Teste de Carga          | <= 50 ms                | < 0%          | >= 200             | <= 70 ms      |
+| TP01-MG | Teste de Estresse       | <= 100 ms               | < 1%          | >= 180             | <= 120 ms     |
+| TP01-MG | Teste de Escalabilidade | <= 70 ms                | < 1%          | >= 220             | <= 90 ms      |
+| TP01-MG | Teste de Pico           | <= 150 ms               | < 2%          | >= 250             | <= 170 ms     |
+| TP01-MG | Teste de Capacidade     | <= 60 ms                | < 1%          | >= 200             | <= 80 ms      |
+
+### PUT
+
+| ID       | Cenário de Teste        | Tempo Médio de Resposta | Taxa de Erros | Throughput (req/s) | Linha dos 90% |
+| -------- | ----------------------- | ----------------------- | ------------- | ------------------ | ------------- |
+| TP01-MPU | Teste de Carga          | <= 300 ms               | < 0%          | >= 50              | <= 350 ms     |
+| TP01-MPU | Teste de Estresse       | <= 500 ms               | < 1%          | >= 40              | <= 600 ms     |
+| TP01-MPU | Teste de Escalabilidade | <= 400 ms               | < 1%          | >= 60              | <= 450 ms     |
+| TP01-MPU | Teste de Pico           | <= 600 ms               | < 2%          | >= 70              | <= 700 ms     |
+| TP01-MPU | Teste de Capacidade     | <= 350 ms               | < 1%          | >= 50              | <= 400 ms     |
+
+### DELETE
+
+| ID      | Cenário de Teste        | Tempo Médio de Resposta | Taxa de Erros | Throughput (req/s) | Linha dos 90% |
+| ------- | ----------------------- | ----------------------- | ------------- | ------------------ | ------------- |
+| TP01-MD | Teste de Carga          | <= 400 ms               | < 0%          | >= 30              | <= 450 ms     |
+| TP01-MD | Teste de Estresse       | <= 600 ms               | < 1%          | >= 25              | <= 700 ms     |
+| TP01-MD | Teste de Escalabilidade | <= 500 ms               | < 1%          | >= 35              | <= 550 ms     |
+| TP01-MD | Teste de Pico           | <= 700 ms               | < 2%          | >= 40              | <= 800 ms     |
+| TP01-MD | Teste de Capacidade     | <= 450 ms               | < 1%          | >= 30              | <= 500 ms     |
