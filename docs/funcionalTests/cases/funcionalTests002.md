@@ -41,28 +41,28 @@ Deve-se atentar aos DoD dessa User Storie, uma vez que esses são os critérios 
 
 ## Casos de testes
 
-| ID   | Cenário de teste      | Descrição Método                                                                | Tipo   | Código esperado |
-| ---- | --------------------- | ------------------------------------------------------------------------------- | ------ | --------------- | --- |
-| CT01 | Cadastro de ingresso  | Cadastro de ingresso com dados válidos                                          | POST   | Positivo        | 201 |
-| CT02 | Cadastro de ingresso  | Cadastro de ingresso com assento fora do intervalo permitido                    | POST   | Negativo        | 400 |
-| CT03 | Cadastro de ingresso  | Cadastro de ingresso com preço fora do intervalo permitido                      | POST   | Negativo        | 400 |
-| CT04 | Cadastro de ingresso  | Cadastro de mais de um ingresso com mesmo assento                               | POST   | Funcional       | 400 |
-| CT05 | Cadastro de ingresso  | Cadastro de ingresso com dados faltando                                         | POST   | Negativo        | 400 |
-| CT06 | Cadastro de ingresso  | Cadastro de ingresso com dados inválidos                                        | POST   | Negativo        | 400 |
-| CT07 | Cadastro de ingresso  | Cadastro de ingresso com filme inválidos                                        | POST   | Negativo        | 400 |
-| CT08 | Listagem de ingressos | Listar ingressos cadastrados no sistema                                         | GET    | Positivo        | 200 |
-| CT09 | Busca de ingresso     | Busca de ingresso com id válido                                                 | GET    | Positivo        | 200 |
-| CT10 | Busca de ingresso     | Busca de ingresso com id inválido                                               | GET    | Negativo        | 404 |
-| CT11 | Busca de ingresso     | Busca de ingresso com id vazio                                                  | GET    | Negativo        | 400 |
-| CT12 | Busca de ingresso     | Busca de ingresso excluído                                                      | GET    | Negativo        | 404 |
-| CT13 | Deleção de ingresso   | Excluir ingresso com id válido                                                  | DELETE | Positivo        | 200 |
-| CT14 | Deleção de ingresso   | Excluir ingresso com id inválido                                                | DELETE | Negativo        | 404 |
-| CT15 | Editar ingresso       | Editar uma informação do ingresso com id válido                                 | PUT    | Positivo        | 200 |
-| CT16 | Editar ingresso       | Editar uma informação do ingresso colocando assento fora do intervalo permitido | PUT    | Negativo        | 400 |
-| CT17 | Editar ingresso       | Editar uma informação do ingresso colocando preço fora do intervalo permitido   | PUT    | Negativo        | 400 |
-| CT18 | Editar ingresso       | Editar nome do ingresso com id válido, com nome já utilizado                    | PUT    | Funcional       | 400 |
-| CT19 | Editar ingresso       | Editar removendo um item do filme e deixando ele vazio                          | PUT    | Negativo        | 400 |
-| CT20 | Editar ingresso       | Editar uma informação do ingresso com id inválido                               | PUT    | Negativo        | 404 |
+| ID   | Cenário de teste      | Descrição Método                                                                | Método | Tipo      | Código esperado |
+| ---- | --------------------- | ------------------------------------------------------------------------------- | ------ | --------- | --------------- |
+| CT01 | Cadastro de ingresso  | Cadastro de ingresso com dados válidos                                          | POST   | Positivo  | 201             |
+| CT02 | Cadastro de ingresso  | Cadastro de ingresso com assento fora do intervalo permitido                    | POST   | Negativo  | 400             |
+| CT03 | Cadastro de ingresso  | Cadastro de ingresso com preço fora do intervalo permitido                      | POST   | Negativo  | 400             |
+| CT04 | Cadastro de ingresso  | Cadastro de mais de um ingresso com mesmo assento                               | POST   | Funcional | 400             |
+| CT05 | Cadastro de ingresso  | Cadastro de ingresso com dados faltando                                         | POST   | Negativo  | 400             |
+| CT06 | Cadastro de ingresso  | Cadastro de ingresso com dados inválidos                                        | POST   | Negativo  | 400             |
+| CT07 | Cadastro de ingresso  | Cadastro de ingresso com filme inválidos                                        | POST   | Negativo  | 400             |
+| CT08 | Listagem de ingressos | Listar ingressos cadastrados no sistema                                         | GET    | Positivo  | 200             |
+| CT09 | Busca de ingresso     | Busca de ingresso com id válido                                                 | GET    | Positivo  | 200             |
+| CT10 | Busca de ingresso     | Busca de ingresso com id inválido                                               | GET    | Negativo  | 404             |
+| CT11 | Busca de ingresso     | Busca de ingresso com id vazio                                                  | GET    | Negativo  | 400             |
+| CT12 | Busca de ingresso     | Busca de ingresso excluído                                                      | GET    | Negativo  | 404             |
+| CT13 | Deleção de ingresso   | Excluir ingresso com id válido                                                  | DELETE | Positivo  | 200             |
+| CT14 | Deleção de ingresso   | Excluir ingresso com id inválido                                                | DELETE | Negativo  | 404             |
+| CT15 | Editar ingresso       | Editar uma informação do ingresso com id válido                                 | PUT    | Positivo  | 200             |
+| CT16 | Editar ingresso       | Editar uma informação do ingresso colocando assento fora do intervalo permitido | PUT    | Negativo  | 400             |
+| CT17 | Editar ingresso       | Editar uma informação do ingresso colocando preço fora do intervalo permitido   | PUT    | Negativo  | 400             |
+| CT18 | Editar ingresso       | Editar nome do ingresso com id válido, com nome já utilizado                    | PUT    | Funcional | 400             |
+| CT19 | Editar ingresso       | Editar removendo um item do filme e deixando ele vazio                          | PUT    | Negativo  | 400             |
+| CT20 | Editar ingresso       | Editar uma informação do ingresso com id inválido                               | PUT    | Negativo  | 404             |
 
 ## Testes candidatos à automação
 
@@ -84,5 +84,5 @@ Os testes selecionados compõem um gama de funcionalidades que garantem o funcio
 
 O cronograma será definido pelo período em que a Sprint está ocorrendo.
 
-- Data de início: 19/08/2024 
+- Data de início: 19/08/2024
 - Data de término: 30/08/2024
