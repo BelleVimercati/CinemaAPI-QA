@@ -1,0 +1,20 @@
+{
+  "name": "cinemaapi-qa",
+  "version": "1.0.0",
+  "description": "Este projeto busca realizar uma análise de performance e qualidade da [API Cinema](https://github.com/juniorschmitz/nestjs-cinema) e faz parte do ultimo desafio proposto pelo programa de bolsas da [Compass Uol](). A documentação e testes foram feitos com base nos conhecimentos adquiridos durante o estágio, buscando ao máximo otimizar o conhecimento e aplicar boas práticas de projeto.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^5.1.1",
+    "mocha": "^10.7.3"
+  }
+}
