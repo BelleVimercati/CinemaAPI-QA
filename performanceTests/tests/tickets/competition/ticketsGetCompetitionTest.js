@@ -2,33 +2,40 @@ import {
   BaseRest,
   BaseChecks,
   ENDPOINTS,
-  testConfig,
+  testConfigTickets,
   BaseFaker,
-} from "../../support/base/baseTest.js";
+} from "../../../support/base/baseTest.js";
+import { group } from "k6";
 
-export const options = testConfig.options.smokeThresholds;
-const base_uri = testConfig.environment.hml.url;
+export const options = testConfigTickets.options.competitionThresholds;
+const base_uri = testConfigTickets.environment.hml.url;
 const baseRest = new BaseRest(base_uri);
 const baseChecks = new BaseChecks();
 const baseFaker = new BaseFaker();
 
 export function setup() {
+  //criando filme
   const movie = baseFaker.randomMovie();
   const urlRes = baseRest.post(ENDPOINTS.MOVIES_ENDPOINT, movie);
   baseChecks.checkStatusCode(urlRes, 201);
 
+  //resgatando ID
   const getMovie = baseRest.get(ENDPOINTS.MOVIES_ENDPOINT);
   const movies = JSON.parse(getMovie.body);
-  const movieId = movies.map((movie) => movie._id);
-  return movieId;
-}
+  const moviesIds = movies.map((movie) => movie._id);
 
-export default (data) => {
-  //cadastrando tickets
-  const ticket = baseFaker.randomTicket(data);
+  const ticket = baseFaker.randomTicket(moviesIds);
   const res = baseRest.post(ENDPOINTS.TICKETS_ENDPOINT, ticket);
   baseChecks.checkStatusCode(res, 201);
-  console.log(res.body);
+
+  return moviesIds;
+}
+
+export default () => {
+  group("Teste de listagem de Tickets - GET (competition test)", () => {
+    const urlRes = baseRest.get(ENDPOINTS.TICKETS_ENDPOINT);
+    baseChecks.checkStatusCode(urlRes, 200);
+  });
 };
 
 export function teardown(data) {
