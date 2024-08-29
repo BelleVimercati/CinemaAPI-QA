@@ -5,6 +5,8 @@ import {
   testConfig,
   BaseFaker,
 } from "../../../support/base/baseTest.js";
+import { group } from "k6";
+
 
 export const options = testConfig.options.unitThresholds;
 const base_uri = testConfig.environment.hml.url;
@@ -13,6 +15,8 @@ const baseChecks = new BaseChecks();
 const baseFaker = new BaseFaker();
 
 export default () => {
-  const res = baseRest.delete(ENDPOINTS.MOVIES_ENDPOINT, "123abc");
-  baseChecks.checkStatusCode(res, 404);
+  group("CT12 - Deletando filme com Id inválido", () => {
+    const res = baseRest.delete(ENDPOINTS.MOVIES_ENDPOINT, "123abc");
+    baseChecks.checkStatusCode(res, 404);
+  });
 };

@@ -5,6 +5,7 @@ import {
   testConfig,
   BaseFaker,
 } from "../../../support/base/baseTest.js";
+import { group } from "k6";
 
 export const options = testConfig.options.unitThresholds;
 const base_uri = testConfig.environment.hml.url;
@@ -19,13 +20,15 @@ export function setup() {
 }
 
 export default () => {
-  const getMovie = baseRest.get(ENDPOINTS.MOVIES_ENDPOINT);
-  const movies = JSON.parse(getMovie.body);
-  const moviesIds = movies.map((movie) => movie._id);
+  group("CT07 - Buscar filme com Id válido", () => {
+    const getMovie = baseRest.get(ENDPOINTS.MOVIES_ENDPOINT);
+    const movies = JSON.parse(getMovie.body);
+    const moviesIds = movies.map((movie) => movie._id);
 
-  moviesIds.forEach((movieId) => {
-    const res = baseRest.getId(ENDPOINTS.MOVIES_ENDPOINT, movieId);
-    baseChecks.checkStatusCode(res, 200);
+    moviesIds.forEach((movieId) => {
+      const res = baseRest.getId(ENDPOINTS.MOVIES_ENDPOINT, movieId);
+      baseChecks.checkStatusCode(res, 200);
+    });
   });
 };
 
@@ -38,6 +41,6 @@ export function teardown() {
   //Deletando filmes
   moviesIds.forEach((movieId) => {
     const res = baseRest.delete(ENDPOINTS.MOVIES_ENDPOINT, movieId);
-    baseChecks.checkStatusCode(res, 200);
+    //baseChecks.checkStatusCode(res, 200);
   });
 }

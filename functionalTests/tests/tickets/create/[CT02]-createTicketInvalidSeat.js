@@ -5,6 +5,7 @@ import {
   testConfig,
   BaseFaker,
 } from "../../../support/base/baseTest.js";
+import { group } from "k6";
 
 export const options = testConfig.options.unitThresholds;
 const base_uri = testConfig.environment.hml.url;
@@ -19,22 +20,23 @@ export function setup() {
 }
 
 export default () => {
-  const getMovie = baseRest.get(ENDPOINTS.MOVIES_ENDPOINT);
-  const movies = JSON.parse(getMovie.body);
-  const moviesIds = movies.map((movie) => movie._id);
+  group("CT02 - Criando ticket com assento inválido", () => {
+    const getMovie = baseRest.get(ENDPOINTS.MOVIES_ENDPOINT);
+    const movies = JSON.parse(getMovie.body);
+    const moviesIds = movies.map((movie) => movie._id);
 
-  //cadastrando tickets
-  moviesIds.forEach((movieId) => {
-    const ticket = {
-      movieId: `${movieId}`,
-      userId: "string",
-      seatNumber: 120,
-      price: 32,
-      showtime: "2024-08-26T16:26:00.077Z",
-    };
+    //cadastrando tickets
+    moviesIds.forEach((movieId) => {
+      const ticket = {
+        movieId: `${movieId}`,
+        userId: "string",
+        seatNumber: 120,
+        price: 32,
+        showtime: "2024-08-26T16:26:00.077Z",
+      };
 
-    const res = baseRest.post(ENDPOINTS.TICKETS_ENDPOINT, ticket);
-    baseChecks.checkStatusCode(res, 400);
-    console.log(res.body);
+      const res = baseRest.post(ENDPOINTS.TICKETS_ENDPOINT, ticket);
+      baseChecks.checkStatusCode(res, 400);
+    });
   });
 };

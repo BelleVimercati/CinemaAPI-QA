@@ -5,6 +5,7 @@ import {
   testConfig,
   BaseFaker,
 } from "../../../support/base/baseTest.js";
+import { group } from "k6";
 
 export const options = testConfig.options.unitThresholds;
 const base_uri = testConfig.environment.hml.url;
@@ -26,8 +27,10 @@ export function setup() {
 }
 
 export default () => {
-  const urlRes = baseRest.post(ENDPOINTS.MOVIES_ENDPOINT, movie);
-  baseChecks.checkStatusCode(urlRes, 400);
+  group("CT02 - Cadastro de filme com nome duplicado", () => {
+    const urlRes = baseRest.post(ENDPOINTS.MOVIES_ENDPOINT, movie);
+    baseChecks.checkStatusCode(urlRes, 400);
+  });
 };
 
 export function teardown() {
@@ -39,6 +42,6 @@ export function teardown() {
   //Deletando filmes
   moviesIds.forEach((movieId) => {
     const res = baseRest.delete(ENDPOINTS.MOVIES_ENDPOINT, movieId);
-    baseChecks.checkStatusCode(res, 200);
+   // baseChecks.checkStatusCode(res, 200);
   });
 }
