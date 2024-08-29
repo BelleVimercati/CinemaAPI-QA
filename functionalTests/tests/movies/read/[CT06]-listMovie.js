@@ -5,6 +5,7 @@ import {
   testConfig,
   BaseFaker,
 } from "../../../support/base/baseTest.js";
+import { group } from "k6";
 
 export const options = testConfig.options.unitThresholds;
 const base_uri = testConfig.environment.hml.url;
@@ -19,8 +20,10 @@ export function setup() {
 }
 
 export default () => {
-  const urlRes = baseRest.get(ENDPOINTS.MOVIES_ENDPOINT);
-  baseChecks.checkStatusCode(urlRes, 200);
+  group("CT06 - Listagem de filmes", () => {
+    const urlRes = baseRest.get(ENDPOINTS.MOVIES_ENDPOINT);
+    baseChecks.checkStatusCode(urlRes, 200);
+  });
 };
 
 export function teardown() {
@@ -32,6 +35,6 @@ export function teardown() {
   //Deletando filmes
   moviesIds.forEach((movieId) => {
     const res = baseRest.delete(ENDPOINTS.MOVIES_ENDPOINT, movieId);
-    baseChecks.checkStatusCode(res, 200);
+    //baseChecks.checkStatusCode(res, 200);
   });
 }

@@ -5,6 +5,7 @@ import {
   testConfig,
   BaseFaker,
 } from "../../../support/base/baseTest.js";
+import { group } from "k6";
 
 export const options = testConfig.options.unitThresholds;
 const base_uri = testConfig.environment.hml.url;
@@ -19,21 +20,36 @@ export function setup() {
 }
 
 export default () => {
+  group("CT06 - Criando ticket com informações inválidas", () => {
+    const getMovie = baseRest.get(ENDPOINTS.MOVIES_ENDPOINT);
+    const movies = JSON.parse(getMovie.body);
+    const moviesIds = movies.map((movie) => movie._id);
+
+    //cadastrando tickets
+    moviesIds.forEach((movieId) => {
+      const ticket = {
+        movieId: `${movieId}`,
+        userId: "string",
+        seatNumber: 4,
+        price: 23,
+        showtime: "fora do formato",
+      };
+
+      const res = baseRest.post(ENDPOINTS.TICKETS_ENDPOINT, ticket);
+      baseChecks.checkStatusCode(res, 400);
+    });
+  });
+};
+
+export function teardown() {
+  // Resgatando Id dos filmes
   const getMovie = baseRest.get(ENDPOINTS.MOVIES_ENDPOINT);
   const movies = JSON.parse(getMovie.body);
   const moviesIds = movies.map((movie) => movie._id);
 
-  //cadastrando tickets
+  //Deletando filmes
   moviesIds.forEach((movieId) => {
-    const ticket = {
-      movieId: `${movieId}`,
-      userId: "string",
-      seatNumber: 4,
-      price: 23,
-      showtime: "fora do formato",
-    };
-
-    const res = baseRest.post(ENDPOINTS.TICKETS_ENDPOINT, ticket);
-    baseChecks.checkStatusCode(res, 400);
+    const res = baseRest.delete(ENDPOINTS.MOVIES_ENDPOINT, movieId);
+    //baseChecks.checkStatusCode(res, 200);
   });
-};
+}

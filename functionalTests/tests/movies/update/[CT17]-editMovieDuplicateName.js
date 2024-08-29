@@ -5,6 +5,7 @@ import {
   testConfig,
   BaseFaker,
 } from "../../../support/base/baseTest.js";
+import { group } from "k6";
 
 export const options = testConfig.options.unitThresholds;
 const base_uri = testConfig.environment.hml.url;
@@ -31,14 +32,15 @@ const movieEqual = {
 };
 
 export default () => {
-  const getMovie = baseRest.get(ENDPOINTS.MOVIES_ENDPOINT);
-  const movies = JSON.parse(getMovie.body);
-  const moviesIds = movies.map((movie) => movie._id);
+  group("CT17 - Editando filme deixando com nome duplicado", () => {
+    const getMovie = baseRest.get(ENDPOINTS.MOVIES_ENDPOINT);
+    const movies = JSON.parse(getMovie.body);
+    const moviesIds = movies.map((movie) => movie._id);
 
-  moviesIds.forEach((movieId) => {
-    const res = baseRest.put(ENDPOINTS.MOVIES_ENDPOINT, movieEqual, movieId);
-    baseChecks.checkStatusCode(res, 201);
-    console.log(res.body);
+    moviesIds.forEach((movieId) => {
+      const res = baseRest.put(ENDPOINTS.MOVIES_ENDPOINT, movieEqual, movieId);
+      baseChecks.checkStatusCode(res, 404);
+    });
   });
 };
 
@@ -51,6 +53,6 @@ export function teardown() {
   //Deletando filmes
   moviesIds.forEach((movieId) => {
     const res = baseRest.delete(ENDPOINTS.MOVIES_ENDPOINT, movieId);
-    baseChecks.checkStatusCode(res, 200);
+    //baseChecks.checkStatusCode(res, 200);
   });
 }

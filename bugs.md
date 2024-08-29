@@ -4,8 +4,10 @@ ct00 -> perimite cadastrar string vazia
 ct04 -> os dados mesmo inválidos passam
 ct05 não foi implemnetada pois a api nem tem admin
 post não retorna reponsebody
+ct08 -> responde em ingles {"message":"Movie not found","error":"Not Found","statusCode":404}
 ct14 -> status code do swagger está errado ou da api
-ct17 -> permite a duplicação de nomes
+ct15 -> {"message":"Movie not found or not updated","error":"Not Found","statusCode":404}
+ct17 -> permite a duplicação de nomes, retorna status code 200 que nem está previsto no swagger
 ct18 -> perimte alterar deixando campos vazios
 
 -----

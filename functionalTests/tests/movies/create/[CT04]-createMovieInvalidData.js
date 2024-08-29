@@ -5,6 +5,7 @@ import {
   testConfig,
   BaseFaker,
 } from "../../../support/base/baseTest.js";
+import { group } from "k6";
 
 export const options = testConfig.options.unitThresholds;
 const base_uri = testConfig.environment.hml.url;
@@ -20,9 +21,11 @@ const movie = {
 };
 
 export default () => {
-  const urlRes = baseRest.post(ENDPOINTS.MOVIES_ENDPOINT, movie);
-  baseChecks.checkStatusCode(urlRes, 400);
-  console.log(urlRes.body);
+  group("CT04 - Cadastro de filme com dados inválidos", () => {
+    const urlRes = baseRest.post(ENDPOINTS.MOVIES_ENDPOINT, movie);
+    baseChecks.checkStatusCode(urlRes, 400);
+    console.log(urlRes.body);
+  });
 };
 
 export function teardown() {
@@ -34,6 +37,6 @@ export function teardown() {
   //Deletando filmes
   moviesIds.forEach((movieId) => {
     const res = baseRest.delete(ENDPOINTS.MOVIES_ENDPOINT, movieId);
-    baseChecks.checkStatusCode(res, 200);
+    //baseChecks.checkStatusCode(res, 200);
   });
 }

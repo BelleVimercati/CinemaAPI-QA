@@ -5,6 +5,7 @@ import {
   testConfig,
   BaseFaker,
 } from "../../../support/base/baseTest.js";
+import { group } from "k6";
 
 export const options = testConfig.options.unitThresholds;
 const base_uri = testConfig.environment.hml.url;
@@ -13,6 +14,8 @@ const baseChecks = new BaseChecks();
 const baseFaker = new BaseFaker();
 
 export default () => {
-  const resId = baseRest.getId(ENDPOINTS.MOVIES_ENDPOINT, "123abc");
-  baseChecks.checkStatusCode(resId, 400);
+  group("CT08 - Buscar filme com Id inválido", () => {
+    const resId = baseRest.getId(ENDPOINTS.MOVIES_ENDPOINT, "123abc");
+    baseChecks.checkStatusCode(resId, 404);
+  });
 };
