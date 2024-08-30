@@ -6,46 +6,26 @@ Este é um documento que visa acompanhar os testes não funcionais da rota movie
 
 ### Status
 
-- ✅: Desenvolvido e correto
+- ✅: Desenvolvido e aprovado
 - 🕒: Aguardando desenvolvimento
-- ❌: Desenvolvido apresentando erro
+- ❌: Desenvolvido mas reprovado
 
 ### POST
 
-|  ID  | Caso de teste | Tipo de teste  | Evidência | Status |
-| :--: | :-----------: | -------------- | --------- | :----: |
-| R001 |    TP01-MP    | Carga          |           |   🕒   |
-| R002 |    TP01-MP    | Estresse       |           |   🕒   |
-| R003 |    TP01-MP    | Escalabilidade |           |   🕒   |
-| R004 |    TP01-MP    | Pico           |           |   🕒   |
-| R005 |    TP01-MP    | Capacidade     |           |   🕒   |
+|  ID  | Caso de teste | Tipo de teste  |                 Evidência                  | Status |
+| :--: | :-----------: | -------------- | :----------------------------------------: | :----: |
+| R001 |     TP01      | Carga          | [Prints](../reports/moviesTestsReports.md) |   ✅   |
+| R002 |     TP02      | Estresse       | [Prints](../reports/moviesTestsReports.md) |   ✅   |
+| R003 |     TP03      | Escalabilidade | [Prints](../reports/moviesTestsReports.md) |   ✅   |
+| R004 |     TP04      | Pico           | [Prints](../reports/moviesTestsReports.md) |   ✅   |
+| R005 |     TP05      | Concorrência   | [Prints](../reports/moviesTestsReports.md) |   ❌   |
 
 ### GET
 
-|  ID  | Caso de teste | Tipo de teste  | Evidência | Status |
-| :--: | :-----------: | -------------- | --------- | :----: |
-| R006 |    TP01-MG    | Carga          |           |   🕒   |
-| R007 |    TP01-MG    | Estresse       |           |   🕒   |
-| R008 |    TP01-MG    | Escalabilidade |           |   🕒   |
-| R009 |    TP01-MG    | Pico           |           |   🕒   |
-| R010 |    TP01-MG    | Capacidade     |           |   🕒   |
-
-### PUT
-
-|  ID  | Caso de teste | Tipo de teste  | Evidência | Status |
-| :--: | :-----------: | -------------- | --------- | :----: |
-| R011 |    TP01-MPU    | Carga          |           |   🕒   |
-| R012 |    TP01-MPU    | Estresse       |           |   🕒   |
-| R013 |    TP01-MPU    | Escalabilidade |           |   🕒   |
-| R014 |    TP01-MPU    | Pico           |           |   🕒   |
-| R015 |    TP01-MPU    | Capacidade     |           |   🕒   |
-
-### DELETE
-
-|  ID  | Caso de teste | Tipo de teste  | Evidência | Status |
-| :--: | :-----------: | -------------- | --------- | :----: |
-| R016 |    TP01-MD    | Carga          |           |   🕒   |
-| R017 |    TP01-MD    | Estresse       |           |   🕒   |
-| R018 |    TP01-MD    | Escalabilidade |           |   🕒   |
-| R019 |    TP01-MD    | Pico           |           |   🕒   |
-| R020 |    TP01-MD    | Capacidade     |           |   🕒   |
+|  ID  | Caso de teste | Tipo de teste  |                 Evidência                  | Status |
+| :--: | :-----------: | -------------- | :----------------------------------------: | :----: |
+| R006 |     TP01      | Carga          | [Prints](../reports/moviesTestsReports.md) |   ✅   |
+| R007 |     TP02      | Estresse       | [Prints](../reports/moviesTestsReports.md) |   ❌   |
+| R008 |     TP03      | Escalabilidade | [Prints](../reports/moviesTestsReports.md) |   ✅   |
+| R009 |     TP04      | Pico           | [Prints](../reports/moviesTestsReports.md) |   ❌   |
+| R010 |     TP05      | Concorrência   | [Prints](../reports/moviesTestsReports.md) |   ❌   |

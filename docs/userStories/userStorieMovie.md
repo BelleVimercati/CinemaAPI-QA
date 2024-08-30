@@ -8,7 +8,7 @@
 
 - Banco de dados e infraestrutura para desenvolvimento disponibilizados;
 - Cadastro de usuário feita;
-- API de autenticação implementada; 
+- API de autenticação implementada;
 - Ambiente de testes disponibilizado.
 
 ## DoD
@@ -25,5 +25,6 @@
 - Não deverá ser possível o cadastro de filmes com nomes duplicados
 - Não deverá ser possível a atualização de filme com nome duplicado
 - Não deverá ser possível fazer ações e chamadas para filmes inexistentes
+- A API deve retornar o Id do filme quando for criado.
 - Os testes executados deverão conter evidências;
 - A cobertura de testes deve se basear no Swagger e ir além, cobrindo cenários alternativos.

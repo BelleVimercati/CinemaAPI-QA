@@ -66,7 +66,7 @@ Deve-se atentar aos DoD dessa User Storie, uma vez que esses são os critérios 
 
 ## Testes candidatos à automação
 
-Os testes ditos canditados à automação foram selecionados com o intuito de cobrir as funcionalidades principais do fluxo de ingressos, bem como, o cumprimento das regras de negócio. Os testes selecionados são:
+Os testes ditos canditados à automação foram selecionados com o intuito de cobrir as funcionalidades principais do fluxo de ingressos, bem como, o cumprimento das regras de negócio. De acordo com o critério de seleção do tester, seguindo uma possível rotina de uma cinema real, os testes selecionados são:
 
 - Testes relacionados a cadastro de ingressos (CT01, CT02, CT03, CT04, CT05, CT06 e CT07)
 - Testes relacionados a listagem de ingressos (CT08)

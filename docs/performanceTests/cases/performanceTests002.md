@@ -6,6 +6,10 @@ Este documento detalha a estratégia de testes de performance a serem realizados
 
 ## Ambiente de Teste
 
+- Processador: 11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz 2.80 GHz
+- RAM: 16,0 GB
+- Sistema: Windows 11 Home
+
 ## Requisitos Não Funcionais de Performance da API
 
 - A API deve ser capaz de processar pelo menos 50 solicitações de reserva de ingressos por segundo.
@@ -19,15 +23,20 @@ Este documento detalha a estratégia de testes de performance a serem realizados
 - Teste de Pico
 - Teste de Concorrência
 
-## Tabela de Cenários de Teste para a Rota /tikets
+## Verbos selecionados para essa bateria de testes
+
+- POST
+- PUT
+
+## Tabela de Cenários de Teste para a Rota /tickets
 
 | ID   | Identificador | Cenário de Teste        | Descrição                                                                          | Carga                                                                   | Duração | Endpoints |
 | ---- | :-----------: | ----------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------- | --------- |
-| TP01 |       T       | Teste de Carga          | Avaliar o desempenho do sistema sob carga normal esperada.                         | 150 usuários simultâneos, com dois ciclos de 2 min                      | 4 min   | ``        |
-| TP02 |       T       | Teste de Estresse       | Identificar o ponto de falha do sistema ao submetê-lo a uma carga extrema.         | 300 usuários simultâneos com requisições a cada 1 minuto, por 2 minutos | 4 min   | ``        |
-| TP03 |       T       | Teste de Escalabilidade | Avaliar o comportamento do sistema sob diferentes configurações de infraestrutura. | 20% de usuários a mais do que no teste de estresse e mais 1 min         | 5 min   | ``        |
-| TP04 |       T       | Teste de Pico           | Avaliar o comportamento do sistema sob um pico repentino de carga.                 | 700 usuários simultâneos por 2 min                                      | 3 min   | ``        |
-| TP05 |       T       | Teste de Concorrência   | Avaliar como o sistema lida com múltiplos usuários acessando simultaneamente       | 500 usuários simultâneos por 1 minutos                                  | 1 min   | ``        |
+| TP01 |       T       | Teste de Carga          | Avaliar o desempenho do sistema sob carga normal esperada.                         | 150 usuários simultâneos, com dois ciclos de 2 min                      | 4 min   | `/tickets(POST)`,`/tickets(PUT)`        |
+| TP02 |       T       | Teste de Estresse       | Identificar o ponto de falha do sistema ao submetê-lo a uma carga extrema.         | 300 usuários simultâneos com requisições a cada 1 minuto, por 2 minutos | 4 min   | `/tickets(POST)`,`/tickets(PUT)`        |
+| TP03 |       T       | Teste de Escalabilidade | Avaliar o comportamento do sistema sob diferentes configurações de infraestrutura. | 20% de usuários a mais do que no teste de estresse e mais 1 min         | 5 min   | `/tickets(POST)`,`/tickets(PUT)`        |
+| TP04 |       T       | Teste de Pico           | Avaliar o comportamento do sistema sob um pico repentino de carga.                 | 700 usuários simultâneos por 2 min                                      | 3 min   | `/tickets(POST)`,`/tickets(PUT)`        |
+| TP05 |       T       | Teste de Concorrência   | Avaliar como o sistema lida com múltiplos usuários acessando simultaneamente       | 500 usuários simultâneos por 1 minutos                                  | 1 min   | `/tickets(POST)`,`/tickets(PUT)`        |
 
 ## Métricas Esperadas para a rota
 
