@@ -5,3 +5,4 @@ export { testConfigTickets } from '../config/environments/environmentsTickets.js
 export { BaseFaker } from '../base/baseFaker.js';
 export { testConfigPost } from '../config/environments/environmentsMoviesPost.js'
 export { testConfigGet } from '../config/environments/environmentsMoviesGet.js'
+export { testConfig } from '../config/environmentsFlow.js'

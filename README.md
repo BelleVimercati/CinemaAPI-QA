@@ -6,6 +6,9 @@ Este projeto busca realizar uma análise de performance e qualidade da [API Cine
 
 A API foi criada com intuito de simular um sistema de cinemas onde é feito o gerenciamento de filmes e ingressos. Para mais informações (extraídas pelo QA) basca conferir a [Wiki deste repositório](https://github.com/BelleVimercati/CinemaAPI-QA/wiki).
 
+<img src="./docs/mindMap/Mapa Mental - Cinema.png" alt="Mapa Mental" style="width: 900px">
+
+
 ## Recursos Utilizados
 
 - k6
